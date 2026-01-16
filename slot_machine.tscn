@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckkk5dtog2mev"]
+
+[ext_resource type="Texture2D" uid="uid://q1bpf7haebdo" path="res://slot-machine.png" id="1_agdmm"]
+
+[node name="SlotMachine" type="Node2D"]
+position = Vector2(400, 200)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, 11.5)
+scale = Vector2(1.38, 1.23)
+texture = ExtResource("1_agdmm")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlo5jfqeebhwj"]
+
+[ext_resource type="Texture2D" uid="uid://co0julkxa2t1t" path="res://pocket-label.png" id="1_h7a2f"]
+[ext_resource type="Script" uid="uid://cso2n06cyvsn5" path="res://main_menu.gd" id="1_qoqlk"]
+[ext_resource type="Texture2D" uid="uid://cyl4bva020cim" path="res://host-label.png" id="3_iwfq2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qoqlk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Name" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_h7a2f")
+
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+icon = ExtResource("3_iwfq2")
+icon_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/MenuOptions/Start" to="." method="_on_start_pressed"]
