@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 signal hit
 
 @export var speed = 200
@@ -8,8 +8,8 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 
-func _process(delta):
-	var velocity = Vector2.ZERO
+func _physics_process(_delta):
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -25,14 +25,14 @@ func _process(delta):
 	else:
 		$AnimatedSprite2D.stop()
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	move_and_slide()
+	print(move_and_slide())
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	hide()
 	hit.emit()
-	# Must be later, we can';t change physics properties on physics callback WHAT IS A PHYSICS CALLBACK
+	# Must be later, we can't change physics properties on physics callback WHAT IS A PHYSICS CALLBACK
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 func start(pos):

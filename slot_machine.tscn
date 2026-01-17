@@ -3,9 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://q1bpf7haebdo" path="res://slot-machine.png" id="1_agdmm"]
 
 [node name="SlotMachine" type="Node2D"]
-position = Vector2(400, 200)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(19, 11.5)
-scale = Vector2(1.38, 1.23)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, -11, 126, -1, 127, 82, 71, 82, 70, 212, -33, 210, -32, 82, -102, 82, -101, -132, -74, -143, -22, -175, 19, -195, 102, -147, 122, -135, 126, -33, 142, -28, 152, -95, 150, -120, 172, -130, 180, -100, 160, -12, 173, -1, 172, 35, 157, 49, 131, 60, 126, 84, 72, 79, -3, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(19, 11.499999)
+rotation = 1.5707964
+scale = Vector2(1.3799999, 1.2299999)
 texture = ExtResource("1_agdmm")
