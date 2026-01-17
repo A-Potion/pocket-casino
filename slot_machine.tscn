@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckkk5dtog2mev"]
+[gd_scene load_steps=6 format=3 uid="uid://ckkk5dtog2mev"]
 
 [ext_resource type="Texture2D" uid="uid://q1bpf7haebdo" path="res://slot-machine.png" id="1_agdmm"]
+[ext_resource type="Script" uid="uid://d222kh0srh0k2" path="res://slot_machine.gd" id="1_nmlme"]
+[ext_resource type="AudioStream" uid="uid://b7s3tipoxl4cw" path="res://slotmachine.mp3" id="3_knkoj"]
+[ext_resource type="Script" uid="uid://c2qtuiey60xeq" path="res://audio_stream_player_2d.gd" id="4_842tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agdmm"]
+size = Vector2(357, 402)
 
 [node name="SlotMachine" type="Node2D"]
+script = ExtResource("1_nmlme")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1, 0)
@@ -18,3 +25,19 @@ texture = ExtResource("1_agdmm")
 position = Vector2(-0.9999999, 3.5527128e-15)
 scale = Vector2(0.9999999, 0.9999999)
 polygon = PackedVector2Array(1, 0, 128, -132, 127, -34, 144, -36, 150, -122, 174, -121, 178, -77, 160, -17, 178, 12, 169, 52, 130, 66, 131, 79, 74, 82, 74, 145, 71, 218, 67, 211, -34, 211, -32, 83, -98, 84, -101, -128, 14, -196, 124, -136)
+
+[node name="InteractArea" type="Area2D" parent="StaticBody2D"]
+position = Vector2(-0.9999999, 3.5527128e-15)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/InteractArea"]
+position = Vector2(20.5, 9)
+shape = SubResource("RectangleShape2D_agdmm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_knkoj")
+script = ExtResource("4_842tv")
+
+[connection signal="slot_activate_within" from="." to="AudioStreamPlayer2D" method="_on_slot_machine_slot_activate_within"]
+[connection signal="body_entered" from="StaticBody2D/InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/InteractArea" to="." method="_on_interact_area_body_exited"]

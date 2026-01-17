@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkxy5k1sjdlcf"]
+[gd_scene load_steps=6 format=3 uid="uid://bkxy5k1sjdlcf"]
 
 [ext_resource type="Texture2D" uid="uid://bpndw0qwvfae1" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://ce1vhq26ipdw4" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://ce1vhq26ipdw4" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://hmjgjsuxwbuo" path="res://character_body_2d.gd" id="1_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(100, 100)
@@ -18,6 +19,7 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
+script = ExtResource("1_i3pqv")
 metadata/_edit_group_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -32,3 +34,4 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"walk"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="want_to_play_slot" from="CharacterBody2D" to="." method="_on_character_body_2d_want_to_play_slot"]

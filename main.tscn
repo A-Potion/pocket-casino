@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq2cp0svwh7la"]
+[gd_scene load_steps=4 format=3 uid="uid://dq2cp0svwh7la"]
 
 [ext_resource type="PackedScene" uid="uid://bkxy5k1sjdlcf" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b3tfmhqjhw0qs" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ckkk5dtog2mev" path="res://slot_machine.tscn" id="2_h2yge"]
 
-[node name="Node" type="Node"]
+[node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("1_0xm2m")]
 
 [node name="SlotMachine" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(818, 457)
+
+[connection signal="slot_activate" from="." to="SlotMachine" method="_on_main_slot_activate"]
+[connection signal="player_wanna_slot" from="Player" to="." method="_on_player_player_wanna_slot"]
+[connection signal="player_entered_interact_slot" from="SlotMachine" to="." method="_on_slot_machine_player_entered_interact_slot"]
+[connection signal="player_entered_interact_slot" from="SlotMachine" to="SlotMachine" method="_on_player_entered_interact_slot"]
+[connection signal="player_left_interact_slot" from="SlotMachine" to="." method="_on_slot_machine_player_left_interact_slot"]
