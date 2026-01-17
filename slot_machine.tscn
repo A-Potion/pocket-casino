@@ -8,11 +8,13 @@
 position = Vector2(1, 0)
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, -11, 126, -1, 127, 82, 71, 82, 70, 212, -33, 210, -32, 82, -102, 82, -101, -132, -74, -143, -22, -175, 19, -195, 102, -147, 122, -135, 126, -33, 142, -28, 152, -95, 150, -120, 172, -130, 180, -100, 160, -12, 173, -1, 172, 35, 157, 49, 131, 60, 126, 84, 72, 79, -3, -1)
-
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(19, 11.499999)
 rotation = 1.5707964
 scale = Vector2(1.3799999, 1.2299999)
 texture = ExtResource("1_agdmm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-0.9999999, 3.5527128e-15)
+scale = Vector2(0.9999999, 0.9999999)
+polygon = PackedVector2Array(1, 0, 128, -132, 127, -34, 144, -36, 150, -122, 174, -121, 178, -77, 160, -17, 178, 12, 169, 52, 130, 66, 131, 79, 74, 82, 74, 145, 71, 218, 67, 211, -34, 211, -32, 83, -98, 84, -101, -128, 14, -196, 124, -136)
